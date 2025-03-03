@@ -1,0 +1,28 @@
+import java.util.*;
+import java.util.stream.*;
+
+class Student {
+    String name;
+    int marks;
+
+    Student(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+}
+
+public class StudentFilter {
+    public static void main(String[] args) {
+        List<Student> students = Arrays.asList(
+            new Student("Alice", 85),
+            new Student("Bob", 70),
+            new Student("Charlie", 90)
+        );
+
+        students.stream()
+            .filter(s -> s.marks > 75)
+            .sorted((s1, s2) -> Integer.compare(s2.marks, s1.marks))
+            .map(s -> s.name)
+            .forEach(System.out::println);
+    }
+}
